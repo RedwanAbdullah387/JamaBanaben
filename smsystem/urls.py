@@ -20,8 +20,10 @@ from jamaZZZ import views as j_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',j_view.home,  name ='home'),
-    path('products/',j_view.products, name= 'products'),
-    path('designer/',j_view.designer, name= 'designer'),
-    path('cart/',j_view.cart, name= 'cart'),
+    path('',j_view.home,  name='home'),
+    path('women/',j_view.women, name='women'),
+    path('men/',j_view.men,name='men'),
+    path('designer/',j_view.designer, name='designer'),
+    path('cart/',j_view.cart, name='cart'),
+    path('contact/',j_view.contact,name='contact'),
 ]
