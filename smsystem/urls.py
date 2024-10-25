@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from jamaZZZ import views as j_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',j_view.home,  name ='home'),
+    path('products/',j_view.products, name= 'products'),
+    path('designer/',j_view.designer, name= 'designer'),
+    path('cart/',j_view.cart, name= 'cart'),
 ]
