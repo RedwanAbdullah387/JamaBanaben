@@ -124,3 +124,52 @@ h1,h2,h3,h4,h5,h6,p,img,br,span,div,section,nav{
     color: var(--white_color);
 }
 /*====================Navbar ================== */
+/* ========================ItemsPart============= */ 
+
+.ItemsPart {
+    background-color: var(--white_color);
+    padding: 100px 0;
+  }
+
+  .ItemsPartTop__title {
+    color: var(--mejenta_color);
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 77px;
+    font-family: var(--popins);
+  }
+
+  .ItemsPartTopWrapper {
+    position: relative;
+  }
+
+  .ItemsPartTopWrapper::after {
+    position: absolute;
+    content: "";
+    width: 250px;
+    height: 7px;
+    background-color: #1A7EF2;
+    padding-bottom: 20px;
+
+  }
+
+  .CustomeCard{
+    background-color: #D9D9D9;
+  }
+ 
+  .CustomeCardPrice{
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 24px;
+    font-family: var(--popins);
+    color: var(--black_color);
+  }
+  
+  .CustomeCardName{
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    font-family: var(--popins);
+    color: var(--black_color);
+  }
+/* ========================ItemsPart============= */ 

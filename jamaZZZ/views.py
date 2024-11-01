@@ -1,14 +1,24 @@
 from django.shortcuts import render
+from .models import *
+
 
 # Create your views here.
 
 def home(request):
-    return render(request,template_name='home.html')
+    items = Items.objects.all()
+    context ={
+        'item':  items,
+    }
+    return render(request,template_name='home.html',context=context)
 
 
 # products
 def women(request):
-    return render(request,template_name='women.html')
+    wo = Product.objects.all()
+    context ={
+        'won':  wo,
+    }
+    return render(request,template_name='women.html',context=context)
 
 def men(request):
     return render(request,template_name='men.html')

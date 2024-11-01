@@ -9,7 +9,7 @@ class Profile(models.Model):
  user = models.OneToOneField(User, on_delete=models.CASCADE)
 
  user_mobile = models.CharField(max_length=11, null=True, blank=True)
- user_profile_pic = models.ImageField(upload_to='upload', null=True, blank=True, default='../upload/Default_pic.png')
+ user_profile_pic = models.ImageField(upload_to='images/', null=True, blank=True, default='images/Default_pic.png')
             #need to include default_pic
  user_type = (
   ('normal', 'normal'),
@@ -24,10 +24,10 @@ class Profile(models.Model):
 class Items(models.Model):
  item_name = models.CharField(max_length=200)
  item_description = models.TextField(blank=True, null=True)
- item_pic = models.ImageField(upload_to='upload', null=True, blank=True)
+ item_pic = models.ImageField(upload_to='images/', null=True, blank=True,default='images/Default_pic.jpg')
  item_price = models.FloatField()
  item_category = models.CharField(max_length=200)
- item_stock = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(50)])
+ item_stock = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
 
  def __str__(self):
   return self.item_name
@@ -36,7 +36,7 @@ class Items(models.Model):
 class Product(models.Model):
  product_name = models.CharField(max_length=200)
  product_description = models.TextField(blank=True, null=True)
- product_pic = models.ImageField(upload_to='upload', null=True, blank=True)
+ product_pic = models.ImageField(upload_to='images/', null=True, blank=True,default='images/Default_pic.jpg')
  product_price = models.FloatField()
  product_category = models.CharField(max_length=200)
  product_stock = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(50)])
@@ -53,7 +53,7 @@ class Product(models.Model):
 class Design(models.Model):
  design_name = models.CharField(max_length=200)
  design_description = models.TextField(blank=True, null=True)
- design_pic = models.ImageField(upload_to='upload', null=True, blank=True)
+ design_pic = models.ImageField(upload_to='images/', null=True, blank=True,default='images/Default_pic.png')
  design_price = models.FloatField()
 
  def __str__(self):

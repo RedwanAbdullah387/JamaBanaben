@@ -16,6 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+
+from django.conf.urls.static import static
+from django.conf import settings
+
 from jamaZZZ import views as j_view
 
 urlpatterns = [
@@ -27,3 +31,5 @@ urlpatterns = [
     path('cart/',j_view.cart, name='cart'),
     path('contact/',j_view.contact,name='contact'),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
