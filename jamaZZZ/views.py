@@ -14,14 +14,19 @@ def home(request):
 
 # products
 def women(request):
-    wo = Product.objects.all()
+    wo = Product.objects.filter(type_of_product = 'Women')
     context ={
         'won':  wo,
     }
     return render(request,template_name='women.html',context=context)
 
 def men(request):
-    return render(request,template_name='men.html')
+    mann = Product.objects.filter(type_of_product = 'Men')
+    context ={
+        'mann':  mann,
+    }
+
+    return render(request,template_name='men.html', context=context)
 
 
 
