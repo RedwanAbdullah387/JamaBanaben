@@ -22,6 +22,7 @@ class Profile(models.Model):
 
 
 class Items(models.Model):
+ item_id = models.IntegerField(primary_key=True)
  item_name = models.CharField(max_length=200)
  item_description = models.TextField(blank=True, null=True)
  item_pic = models.ImageField(upload_to='images/', null=True, blank=True,default='images/Default_pic.jpg')
@@ -34,6 +35,7 @@ class Items(models.Model):
 
 
 class Product(models.Model):
+ product_id = models.IntegerField(primary_key=True)
  product_name = models.CharField(max_length=200)
  product_description = models.TextField(blank=True, null=True)
  product_pic = models.ImageField(upload_to='images/', null=True, blank=True,default='images/Default_pic.jpg')
@@ -61,8 +63,6 @@ class Design(models.Model):
 
 
 class Cart(models.Model):
- user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
- product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
  create_date = models.DateTimeField(auto_now_add= True, auto_now= False)
  update_date = models.DateTimeField(auto_now_add=True, auto_now=False)
 

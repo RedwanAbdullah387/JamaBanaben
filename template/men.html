@@ -16,6 +16,10 @@
 
     }
 
+    html{
+      scroll-behavior: smooth;
+    }
+
     .ItemsPart {
       background-color: var(--white_color);
       padding: 100px 0;
@@ -63,11 +67,26 @@
       line-height: 24px;
       font-family: var(--popins);
       color: var(--black_color);
+      padding-bottom: 5px;
     }
 
     .CardImage{
       width: 320px;
       height: 300px;
+    }
+
+
+    .Details{
+      width: 80px;
+      height: 38px;
+      background-color: var(--mejenta_color);
+      color: var(--white_color);
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+      font-family: var(--popins);
     }
 
 
@@ -191,6 +210,7 @@
 
                   <p class="CustomeCardPrice">{{m.product_price}}/-</p>
                   <p class="CustomeCardName">{{m.product_name}}</p>
+                  <a href=""><button class="Details">Details</button></a>
 
                 </div>
               </div>
