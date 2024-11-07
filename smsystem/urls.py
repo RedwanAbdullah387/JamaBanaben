@@ -25,6 +25,7 @@ from jamaZZZ import views as j_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',j_view.home,  name='home'),
+    path('<str:item_id>',j_view.itemDetails,name ='itemDetails'),
     path('women/',j_view.women, name='women'),
     path('men/',j_view.men,name='men'),
     path('designer/',j_view.designer, name='designer'),

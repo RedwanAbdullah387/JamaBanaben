@@ -11,6 +11,15 @@ def home(request):
     }
     return render(request,template_name='home.html',context=context)
 
+# item_details page
+
+def itemDetails(request,item_id):
+    iDet = Items.objects.get(pk=item_id)
+    context ={
+        'iDetails':  iDet,
+    }
+    return render(request,template_name='item_details.html',context=context)
+
 
 # products
 def women(request):
