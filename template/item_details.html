@@ -119,6 +119,12 @@
       color: var(--black_color);
       padding-bottom: 4px;
     }
+
+    
+    .logout{
+      color:var(--white_color);
+      font-family: var(--popins);
+    }
     /* ========================ItemsPart============= */
   </style>
 
@@ -221,10 +227,12 @@
           <input class="form-control me-2" type="search" placeholder="search" aria-label="Search">
           <button class="CustomeButton" type="submit">Search</button>
         </form>
+        <a href="{% url 'loginPage' %}" class="NavbarLoginSignUpButton">
+          log in/Sign Up
+        </a>
 
-        <button class="NavbarLoginSignUpButton">
-          log in/Sign up
-        </button>
+        <span>{{request.user}}</span>
+        <span><a class="logout" href="{% url 'logoutuser' %}">Logout</a></span>
       </div>
     </div>
   </nav>

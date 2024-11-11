@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Home</title>
+  <title>Product Details Women</title>
 
   <style>
     /* ========================ItemsPart============= */
@@ -237,7 +237,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="ItemsPartTopWrapper mb-5">
-            <h1 class="ItemsPartTop__title">Item:#{{iDetails.item_id}}</h1>
+            <h1 class="ItemsPartTop__title">Item:#{{wDetails.id}}</h1>
           </div>
         </div>
       </div>
@@ -246,18 +246,19 @@
         <div class="col-lg-3">
           <div class="ItemDetailsbottomLeft">
             <picture>
-              <img src="{{iDetails.item_pic.url}}" class="img-fluid ItemDetailsPic">
+              <img src="{{iDetails.product_pic.url}}" class="img-fluid ItemDetailsPic">
             </picture>
 
           </div>
         </div>
         <div class="col-lg-9">
           <div class="ItemDetailsbottomRight">
-            <p class="ItemDetailsbottomRight__name">{{iDetails.item_name}}</p>
-            <p class="ItemDetailsbottomRight__description">{{iDetails.item_description}}</p>
-            <p class="ItemDetailsbottomRight__price"><span>Price:</span>{{iDetails.item_price}}/-</p>
-            <p class="ItemDetailsbottomRight__category"><span>Category:</span>{{iDetails.item_category}}</p>
-            <p class="ItemDetailsbottomRight__stock"><span>Stock:</span>{{iDetails.item_stock}}+</p>
+            <p class="ItemDetailsbottomRight__name">{{wDetails.product_name}}</p>
+            <p class="ItemDetailsbottomRight__description">{{wDetails. product_description}}</p>
+            <p class="ItemDetailsbottomRight__price"><span>Price:</span>{{wDetails.product_price}}/-</p>
+            <p class="ItemDetailsbottomRight__price"><span>Type:</span>{{wDetails.product_type}}/-</p>
+            <p class="ItemDetailsbottomRight__category"><span>Category:</span>{{wDetails.product_category}}</p>
+            <p class="ItemDetailsbottomRight__stock"><span>Stock:</span>{{wDetails.product_stock}}+</p>
           </div>
         </div>
       </div>

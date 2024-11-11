@@ -4,6 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Cart</title>
+  <style>
+    
+    .logout{
+      color:var(--white_color);
+      font-family: var(--popins);
+    }
+  </style>
 
   <!-- ========= fontawesome ===============-->
   <link rel="stylesheet" data-purpose="Layout StyleSheet" title="Web Awesome"
@@ -88,9 +95,13 @@
           <button class="CustomeButton" type="submit">Search</button>
         </form>
 
-        <button class="NavbarLoginSignUpButton">
-          log in/Sign up
-        </button>
+        <a href="{% url 'loginPage' %}" class="NavbarLoginSignUpButton">
+          log in/Sign Up
+        </a>
+
+        <span>{{request.user}}</span>
+        <span><a class="logout" href="{% url 'logoutuser' %}">Logout</a></span>
+
       </div>
     </div>
   </nav>
