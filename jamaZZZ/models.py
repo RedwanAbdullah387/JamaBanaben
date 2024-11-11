@@ -22,7 +22,7 @@ class Profile(models.Model):
 
 
 class Items(models.Model):
- item_id = models.IntegerField(primary_key=True)
+ id = models.IntegerField(primary_key=True)
  item_name = models.CharField(max_length=200)
  item_description = models.TextField(blank=True, null=True)
  item_pic = models.ImageField(upload_to='images/', null=True, blank=True,default='images/Default_pic.jpg')
@@ -34,8 +34,8 @@ class Items(models.Model):
   return self.item_name
 
 
-class Product(models.Model):
- product_id = models.IntegerField(primary_key=True)
+class ProductWomen(models.Model):
+ id = models.IntegerField(primary_key=True)
  product_name = models.CharField(max_length=200)
  product_description = models.TextField(blank=True, null=True)
  product_pic = models.ImageField(upload_to='images/', null=True, blank=True,default='images/Default_pic.jpg')
@@ -47,7 +47,23 @@ class Product(models.Model):
   ('Women', 'Women')
  )
  type_of_product = models.CharField(max_length=10, choices=product_type, blank=True, null=True)
+ def __str__(self):
+  return self.product_name
 
+
+class Men(models.Model):
+ id = models.IntegerField(primary_key=True)
+ product_name = models.CharField(max_length=200)
+ product_description = models.TextField(blank=True, null=True)
+ product_pic = models.ImageField(upload_to='images/', null=True, blank=True,default='images/Default_pic.jpg')
+ product_price = models.FloatField()
+ product_category = models.CharField(max_length=200)
+ product_stock = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(50)])
+ product_type = (
+  ('Men', 'Men'),
+  ('Women', 'Women')
+ )
+ type_of_product = models.CharField(max_length=10, choices=product_type, blank=True, null=True)
  def __str__(self):
   return self.product_name
 
