@@ -30,7 +30,7 @@ urlpatterns = [
     path('updateItem/<str:pk>',j_view.updateItem,name='updateItem'),
     path('deleteItem/<str:pk>',j_view.deleteItem,name='deleteItem'),
     path('women/',j_view.women, name='women'),
-    path('<str:pk>',j_view.womenDetails,name ='womenDetails'),
+    path('women/<str:pk>/',j_view.womenDetails,name ='womenDetails'),
     path('men/',j_view.men, name='men'),
     path('<str:id>',j_view.menDetails,name ='menDetails'),
     path('designer/',j_view.designer, name='designer'),
@@ -39,6 +39,8 @@ urlpatterns = [
     path('registration/',j_view.Registration,name='Registration'),
     path('login/',j_view.loginPage,name='loginPage'),
     path('logout/', j_view.logoutuser, name='logoutuser'),
+    path('user/',j_view.userPage,name='userPage'),
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

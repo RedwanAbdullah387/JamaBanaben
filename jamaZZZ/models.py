@@ -42,11 +42,8 @@ class ProductWomen(models.Model):
  product_price = models.FloatField()
  product_category = models.CharField(max_length=200)
  product_stock = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(50)])
- product_type = (
-  ('Men', 'Men'),
-  ('Women', 'Women')
- )
- type_of_product = models.CharField(max_length=10, choices=product_type, blank=True, null=True)
+
+
  def __str__(self):
   return self.product_name
 
@@ -59,11 +56,6 @@ class Men(models.Model):
  product_price = models.FloatField()
  product_category = models.CharField(max_length=200)
  product_stock = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(50)])
- product_type = (
-  ('Men', 'Men'),
-  ('Women', 'Women')
- )
- type_of_product = models.CharField(max_length=10, choices=product_type, blank=True, null=True)
  def __str__(self):
   return self.product_name
 
@@ -79,6 +71,6 @@ class Design(models.Model):
 
 
 class Cart(models.Model):
- create_date = models.DateTimeField(auto_now_add= True, auto_now= False)
+ create_date = models.DateTimeField(auto_now_add=True, auto_now=False)
  update_date = models.DateTimeField(auto_now_add=True, auto_now=False)
 

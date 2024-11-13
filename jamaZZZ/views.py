@@ -1,53 +1,58 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from .models import *
 from .forms import ItemsForm,CreateUserForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
+
+from .decorators import unauthenticated_user,allowed_users,admin_only
+from django.contrib.auth.models import Group
+
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@unauthenticated_user
 def Registration(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:
-        form = CreateUserForm()
 
-        if request.method == 'POST':
-            form = CreateUserForm(request.POST)
-            if form.is_valid():
-                form.save()
-                user = form.cleaned_data.get('username')
-                messages.success(request,"Account was created for " + user)
-                return redirect('loginPage')
+    form = CreateUserForm()
 
-        context={
-            'form':form,
-        }
-        return render(request,template_name='Registration.html',context=context)
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            group = Group.objects.get(name = 'customer')
+            user.groups.add(group)
+            messages.success(request, "Account was created for " + username)
+            return redirect('loginPage')
+
+    context = {
+        'form': form,
+    }
+    return render(request, template_name='Registration.html', context=context)
 
 
+@unauthenticated_user
 def loginPage(request):
-    if request.user.is_authenticated:
-        return redirect('home')
-    else:
-        if request.method == "POST":
-           username= request.POST.get('username')
-           password= request.POST.get('password')
 
-           user =authenticate(request,username=username,password=password)
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-           if user is not None:
-               login(request,user)
-               return redirect('home')
-           else:
-               messages.info(request,"username or password incorrect")
+        user = authenticate(request, username=username, password=password)
 
-        context={
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.info(request, "username or password incorrect")
 
-        }
-        return render(request,template_name='Login.html',context=context)
+    context = {
+
+    }
+    return render(request, template_name='login.html', context=context)
 
 
 def logoutuser(request):
@@ -55,7 +60,8 @@ def logoutuser(request):
     return redirect('loginPage')
 
 
-
+@login_required(login_url='login')
+@admin_only
 def home(request):
     items = Items.objects.all()
     context ={
@@ -116,7 +122,7 @@ def itemDetails(request, pk):
 
 # products
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def women(request):
     wo = ProductWomen.objects.all()
     context ={
@@ -132,7 +138,7 @@ def womenDetails(request, pk):
     }
     return render(request,template_name='product_details_women.html',context=context)
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def men(request):
     man = Men.objects.all()
     context ={
@@ -165,6 +171,14 @@ def cart(request):
 def contact(request):
     return render(request,template_name='contact_us.html')
 
+@unauthenticated_user
+#coustomer
+@allowed_users(allowed_roles=['customer'])
+def userPage(request):
+    items = Items.objects.all()
+    context = {
+        'item': items,
+    }
 
-
+    return render(request,template_name='user.html',context=context)
 
