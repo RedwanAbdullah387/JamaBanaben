@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +18,7 @@
 
     }
 
-    html{
+    html {
       scroll-behavior: smooth;
     }
 
@@ -51,7 +50,7 @@
     }
 
 
-    .Details{
+    .Details {
       width: 80px;
       height: 38px;
       background-color: var(--mejenta_color);
@@ -64,7 +63,7 @@
       font-family: var(--popins);
     }
 
-    .ItemDetailsbottomRight__name{
+    .ItemDetailsbottomRight__name {
       font-size: 20px;
       font-weight: 600;
       line-height: 22px;
@@ -72,7 +71,8 @@
       color: var(--black_color);
       padding-bottom: 10px;
     }
-    .ItemDetailsbottomRight__description{
+
+    .ItemDetailsbottomRight__description {
       font-size: 16px;
       font-weight: 300;
       line-height: 20px;
@@ -80,7 +80,8 @@
       color: var(--grey_color);
       padding-bottom: 10px;
     }
-    .ItemDetailsbottomRight__price{
+
+    .ItemDetailsbottomRight__price {
       font-size: 16px;
       font-weight: 700;
       line-height: 20px;
@@ -89,7 +90,7 @@
       padding-bottom: 4px;
     }
 
-    .ItemDetailsbottomRight__category{
+    .ItemDetailsbottomRight__category {
 
       font-size: 16px;
       font-weight: 500;
@@ -100,9 +101,9 @@
 
     }
 
-    .ItemDetailsbottomRight__stock{
+    .ItemDetailsbottomRight__stock {
 
-      
+
       font-size: 16px;
       font-weight: 500;
       line-height: 20px;
@@ -111,7 +112,8 @@
       padding-bottom: 4px;
 
     }
-    span{
+
+    span {
       font-size: 16px;
       font-weight: 500;
       line-height: 20px;
@@ -119,10 +121,11 @@
       color: var(--black_color);
       padding-bottom: 4px;
     }
+
     /* ========================ItemsPart============= */
   </style>
 
- 
+
 
 
   <!-- =================== Google fonts CDN Link ===== -->
@@ -158,7 +161,7 @@
   <!-- ========= fontawesome ===============-->
 
 
-
+  {% load static %}
 
   <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
@@ -237,7 +240,7 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="ItemsPartTopWrapper mb-5">
-            <h1 class="ItemsPartTop__title">Product:#{{mDetails.id }}</h1>
+            <h1 class="ItemsPartTop__title">Product:#{{mDetails.id}}</h1>
           </div>
         </div>
       </div>
@@ -256,7 +259,6 @@
             <p class="ItemDetailsbottomRight__name">{{mDetails.product_name}}</p>
             <p class="ItemDetailsbottomRight__description">{{mDetails.product_description}}</p>
             <p class="ItemDetailsbottomRight__price"><span>Price:</span>{{mDetails.product_price}}/-</p>
-            <p class="ItemDetailsbottomRight__price"><span>Price:</span>{{mDetails.product_type}}/-</p>
             <p class="ItemDetailsbottomRight__category"><span>Category:</span>{{mDetails.product_category}}</p>
             <p class="ItemDetailsbottomRight__stock"><span>Stock:</span>{{mDetails.product_stock}}+</p>
           </div>

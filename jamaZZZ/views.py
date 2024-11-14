@@ -96,7 +96,7 @@ def updateItem(request,pk):
 
 def deleteItem(request,pk):
     delete = Items.objects.get(id=pk)
-    if request.method == "POST" :
+    if request.method == "POST":
         delete.delete()
         return redirect('/')
     context = {
@@ -146,7 +146,7 @@ def men(request):
     }
     return render(request,template_name='men.html',context=context)
 def menDetails(request, pk):
-    mDet = Men.objects.get(id =pk)
+    mDet = Men.objects.all(id =pk)
     context ={
         'mDetails':  mDet,
     }

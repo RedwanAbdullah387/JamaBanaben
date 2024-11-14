@@ -1,4 +1,4 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,7 +159,7 @@
 
 
 
-
+  {% load static %}
   <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
 
@@ -222,13 +222,15 @@
           <button class="CustomeButton" type="submit">Search</button>
         </form>
 
-        <button class="NavbarLoginSignUpButton">
-          log in/Sign up
-        </button>
+        <a href="{% url 'loginPage' %}" class="NavbarLoginSignUpButton">
+          log in/Sign Up
+        </a>
+
+        <span>{{request.user}}</span>
+        <span><a class="logout" href="{% url 'logoutuser' %}">Logout</a></span>
       </div>
     </div>
-  </nav>
-  <!-- ======================= Navbar ============= -->
+  </nav>  <!-- ======================= Navbar ============= -->
 
   <!-- ============================ Items Part ============ -->
   <section class="ItemsPart">
@@ -246,7 +248,7 @@
         <div class="col-lg-3">
           <div class="ItemDetailsbottomLeft">
             <picture>
-              <img src="{{iDetails.product_pic.url}}" class="img-fluid ItemDetailsPic">
+              <img src="{{wDetails.product_pic.url}}" class="img-fluid ItemDetailsPic">
             </picture>
 
           </div>
@@ -254,9 +256,9 @@
         <div class="col-lg-9">
           <div class="ItemDetailsbottomRight">
             <p class="ItemDetailsbottomRight__name">{{wDetails.product_name}}</p>
-            <p class="ItemDetailsbottomRight__description">{{wDetails. product_description}}</p>
+            <p class="ItemDetailsbottomRight__description">{{wDetails.product_description}}</p>
             <p class="ItemDetailsbottomRight__price"><span>Price:</span>{{wDetails.product_price}}/-</p>
-            <p class="ItemDetailsbottomRight__price"><span>Type:</span>{{wDetails.product_type}}/-</p>
+
             <p class="ItemDetailsbottomRight__category"><span>Category:</span>{{wDetails.product_category}}</p>
             <p class="ItemDetailsbottomRight__stock"><span>Stock:</span>{{wDetails.product_stock}}+</p>
           </div>
