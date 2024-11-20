@@ -18,7 +18,7 @@ class Profile(models.Model):
  type_of_user = models.CharField(max_length=10, choices=user_type, blank=True, null=True)
 
  def __str__(self):
-  return self.user.username
+    return self.user.username
 
 
 class Items(models.Model):
@@ -31,7 +31,7 @@ class Items(models.Model):
  item_stock = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
 
  def __str__(self):
-  return self.item_name
+    return self.item_name
 
 
 class ProductWomen(models.Model):
@@ -45,7 +45,7 @@ class ProductWomen(models.Model):
 
 
  def __str__(self):
-  return self.product_name
+    return self.product_name
 
 
 class Men(models.Model):
@@ -57,7 +57,7 @@ class Men(models.Model):
  product_category = models.CharField(max_length=200)
  product_stock = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(50)])
  def __str__(self):
-  return self.product_name
+    return self.product_name
 
 
 class Design(models.Model):
@@ -67,7 +67,7 @@ class Design(models.Model):
  design_price = models.FloatField()
 
  def __str__(self):
-  return self.design_name
+    return self.design_name
 
 
 class Cart(models.Model):

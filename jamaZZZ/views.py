@@ -113,7 +113,7 @@ def deleteItem(request,pk):
  # item_details page
 
 def itemDetails(request, pk):
-    iDet = Items.objects.get( id=pk)
+    iDet = Items.objects.get(id=pk)
     context ={
         'iDetails':  iDet,
     }
@@ -145,10 +145,10 @@ def men(request):
         'mann':  man,
     }
     return render(request,template_name='men.html',context=context)
-def menDetails(request, pk):
-    mDet = Men.objects.all(id =pk)
+def MenDetails(request, pk):
+    mDet =Men.objects.get(id=pk)
     context ={
-        'mDetails':  mDet,
+        'm_Details':  mDet,
     }
     return render(request,template_name='product_details_men.html',context=context)
 
