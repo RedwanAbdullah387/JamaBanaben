@@ -23,7 +23,7 @@ def Registration(request):
         if form.is_valid():
             user = form.save()
             username = form.cleaned_data.get('username')
-            group = Group.objects.get(name = 'customer')
+            group = Group.objects.get(name='customer')
             user.groups.add(group)
             messages.success(request, "Account was created for " + username)
             return redirect('loginPage')
@@ -60,7 +60,7 @@ def logoutuser(request):
     return redirect('loginPage')
 
 
-@login_required(login_url='login')
+@login_required(login_url='loginPage')
 @admin_only
 def home(request):
     items = Items.objects.all()
@@ -171,7 +171,7 @@ def cart(request):
 def contact(request):
     return render(request,template_name='contact_us.html')
 
-@unauthenticated_user
+@login_required(login_url='loginPage')
 #coustomer
 @allowed_users(allowed_roles=['customer'])
 def userPage(request):

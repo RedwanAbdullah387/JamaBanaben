@@ -6,7 +6,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Profile(models.Model):
- user = models.OneToOneField(User, on_delete=models.CASCADE)
+ user = models.OneToOneField(User,null=True, on_delete=models.CASCADE)
 
  user_mobile = models.CharField(max_length=11, null=True, blank=True)
  user_profile_pic = models.ImageField(upload_to='images/', null=True, blank=True, default='images/Default_pic.png')

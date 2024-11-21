@@ -1,10 +1,10 @@
-<!--============== home page for customer ================-->
+<!--============== customer ================-->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <title>User_Home</title>
+  <title>UserPage</title>
 
   <style>
     /* ========================ItemsPart============= */
@@ -287,11 +287,15 @@
                   <p class="CustomeCardPrice">{{i.item_price}}/-</p>
                   <p class="CustomeCardName">{{i.item_name}}</p>
                   <a href="{% url 'itemDetails' i.id %}"><button class="Details">Details</button></a>
-                   </div>
+
+                </div>
               </div>
             </div>
             {% endfor %}
           </div>
+
+
+
 
 
         </div>
@@ -300,6 +304,7 @@
 
     </div>
   </section>
+
   <!-- ============================ Items ============ -->
 
 
