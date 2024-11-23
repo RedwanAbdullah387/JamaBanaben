@@ -250,10 +250,10 @@
           <li class="nav-item">
             <a class="CustomNavItem" href="{% url 'cart' %}">Cart</a>
           </li>
-
-        <li class="nav-item">
+          <li class="nav-item">
             <a class="CustomNavItem" href="{% url 'orders' %}">Orders</a>
         </li>
+
 
           <li class="nav-item">
             <a class="CustomNavItem" href="{% url 'contact' %}">Contact Us</a>
@@ -261,29 +261,21 @@
 
 
         </ul>
-        <!-- <form class="d-flex" role="search">
+        <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="search" aria-label="Search">
           <button class="CustomeButton" type="submit">Search</button>
-        </form> -->
+        </form>
 
         <a href="{% url 'loginPage' %}" class="NavbarLoginSignUpButton">
           log in/Sign Up
         </a>
 
         <span>{{request.user}}</span>
-
-
         <span><a class="logout" href="{% url 'logoutuser' %}">Logout</a></span>
-
       </div>
-        <div>
-              <a href="{% url 'cart' %}"><i class="fa-sharp fa-solid fa-cart-shopping" style="color: #FFD43B;"></i></a>
-              <span class="badge badge-pill badge-danger notify">{{request.user.profile.get_cart_count}}</span>
-
-          </div>
-        <button class="MyProfileButton"><a class="MyProfile" href="{% url 'userProfile' %}">My profile</a>
-        </button>
-        </div>
+      <button class="MyProfileButton"><a class="MyProfile" href="{% url 'userProfile' %}">My profile</a>
+      </button>
+    </div>
   </nav>
   <!-- ======================= Navbar ============= -->
 
@@ -294,31 +286,34 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="ItemsPartTopWrapper mb-5">
-            <h1 class="ItemsPartTop__title">Home</h1>
+            <h1 class="ItemsPartTop__title">User Profile</h1>
           </div>
 
 
 
           <div class="row">
-            {% for i in item %}
+
             <div class="col-lg-3 d-flex justify-content-between">
               <div class="card CustomCardFull mb-5" style="width: 18rem;">
 
 
-                <img class="img-fluid-100 card-img-top CardImage" src="{{i.item_pic.url}}" alt="Card image cap">
+                <img class="img-fluid-100 card-img-top CardImage" src="{{request.user.customer.user_profile_pic}}" alt="Card image cap">
 
 
                 <div class="card-body CustomeCard">
 
-                  <p class="CustomeCardPrice">{{i.item_price}}/-</p>
-                  <p class="CustomeCardName">{{i.item_name}}</p>
-                  <a href="{% url 'itemDetails' i.id %}"><button class="Details">Details</button></a>
+                    <form method="Post" action="" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      {{form.as_p}}
+                        <input class="btn btn-primary" type="submit">
+
+                    </form>
 
 
                 </div>
               </div>
             </div>
-            {% endfor %}
+
           </div>
 
 
@@ -346,8 +341,6 @@
     crossorigin="anonymous"></script>
 
   <!-- ===================== bootstrap CDN Link ======= -->
-  <script src="{% static 'js/cart.js' %}"></script>
-
 </body>
 
 </html>

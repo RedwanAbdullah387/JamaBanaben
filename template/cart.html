@@ -5,11 +5,91 @@
   <meta charset="UTF-8">
   <title>Cart</title>
   <style>
-    
+
+:root {
+      --blue_color: #1A7EF2;
+      --white_color: #FFFFFF;
+      --mejenta_color: #DA14AE;
+      --black_color: #000000;
+      --popins: "Poppins", sans-serif;
+
+    }
+    .MyProfile{
+      color: var(--white_color);
+      font-family: var(--popins);
+    }
+    .MyProfileButton{
+      width: 100px;
+      height: 38px;
+      background-color:#DE73EF;
+      
+      border: none;
+      border-radius: 5px;
+    }
+
     .logout{
       color:var(--white_color);
       font-family: var(--popins);
     }
+       /* Add CSS styles for card view */
+        .product-card {
+            width: 250px; /* Set card width */
+            margin: 10px; /* Add spacing between cards */
+            border: 1px solid #ccc; /* Add a border for visual separation */
+            border-radius: 5px; /* Add border radius for rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+            overflow: hidden; /* Hide overflowing content */
+            display: flex; /* Set display to flex for horizontal alignment */
+            flex-direction: column; /* Align items vertically */
+        }
+
+        .product-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 10px; /* Add padding inside the card */
+            flex-grow: 1; /* Allow info section to grow */
+        }
+
+        .product-name {
+            font-weight: bold; /* Make product name bold */
+            margin-bottom: 5px; /* Add spacing below product name */
+        }
+        .product-Id{
+          font-family: var(--popins);
+        }
+
+        .product-price {
+            color:var(--mejenta_color);
+            font-family: var(--popins);
+        }
+
+        .remove-button {
+            background-color: #dc3545; /* Set button background color to red */
+            color:var(--white_color); /* Set text color to white */
+            font-family: var(--popins);
+            padding-left: 80px;
+        }
+
+        .edit-button {
+            margin-top: 10px;
+            background-color: var(--blue_color);
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-family: var(--popins);
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between; /* Space items evenly along the main axis */
+        }
+
   </style>
 
   <!-- ========= fontawesome ===============-->
@@ -83,6 +163,10 @@
           <li class="nav-item">
             <a class="CustomNavItem" href="{% url 'cart' %}">Cart</a>
           </li>
+          <li class="nav-item">
+            <a class="CustomNavItem" href="{% url 'orders' %}">Orders</a>
+        </li>
+
 
           <li class="nav-item">
             <a class="CustomNavItem" href="{% url 'contact' %}">Contact Us</a>
@@ -90,10 +174,7 @@
 
           
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="search" aria-label="Search">
-          <button class="CustomeButton" type="submit">Search</button>
-        </form>
+        
 
         <a href="{% url 'loginPage' %}" class="NavbarLoginSignUpButton">
           log in/Sign Up
@@ -103,10 +184,40 @@
         <span><a class="logout" href="{% url 'logoutuser' %}">Logout</a></span>
 
       </div>
+      <button class="MyProfileButton"><a class="MyProfile" href="{% url 'userProfile' %}">My profile</a>
+      </button>
+
     </div>
   </nav>
   <!-- ======================= Navbar ============= -->
+<!--  ======================cart ===============-->
+  <h1>Your Shopping Cart</h1>
 
+    <div class="product-list">
+        {% for item in cart_items %}
+            <div class="product-card">
+                <img class="product-image" src="{{item.product.item_pic.url}}" alt="{{item.product.name}}">
+                <div class="product-info">
+                    <p class="product-name">{{item.product.item_name}}</p>
+                    <p class="product-Id">ID:{{item.product.id}}</p>
+                    <p class="product-price">Price: {{item.product.item_price}}</p>
+                </div>
+
+
+                <a class="remove-button" href="{% url 'remove_from_cart' item.id %}">Remove</a>
+            </div>
+        {% empty %}
+            <p>Your cart is empty.</p>
+        {% endfor %}
+    </div>
+
+
+
+    <div class="button-container">
+        <a class="edit-button" href="{% url 'userPage' %}">Continue Shopping</a>
+        <!-- Add button for continue editing here -->
+    </div>
+<!--===========================cart =====================-->
 
   <!-- ====================== footer ============== -->
   

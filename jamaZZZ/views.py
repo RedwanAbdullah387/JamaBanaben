@@ -1,11 +1,13 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
+
 from .models import *
-from .forms import ItemsForm,CreateUserForm
+from .forms import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-
-
+from django.http import JsonResponse
+import json
 from .decorators import unauthenticated_user,allowed_users,admin_only
 from django.contrib.auth.models import Group
 
@@ -163,9 +165,7 @@ def designer(request):
 
 
 # cart page
-@login_required(login_url='login')
-def cart(request):
-    return render(request,template_name='cart.html')
+
 
 # contact_us page
 def contact(request):
@@ -182,3 +182,108 @@ def userPage(request):
 
     return render(request,template_name='user.html',context=context)
 
+@login_required(login_url='loginPage')
+@allowed_users(allowed_roles=['customer'])
+
+@login_required
+def userProfile_add(request):
+
+    if request.method == 'POST':
+        form = userProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.instance.username = request.user.username  # Prefill username
+            form.save()
+            return redirect('userProfile')
+    else:
+        # Prefill the username field with the username of the logged-in user
+        form = userProfileForm(initial={'username': request.user.username})
+
+    context = {
+        'form': form
+    }
+    return render(request,template_name='UserProfileForm.html', context=context)
+
+
+def userProfile(request):
+    try:
+        profile = UserProfile.objects.get(user=request.user)
+    except UserProfile.DoesNotExist:
+        profile = None
+
+    context = {
+        'profile': profile
+    }
+    return render(request, template_name='UserProfile.html', context=context)
+
+
+def edit_profile(request):
+    profile_instance = request.user.userprofile
+    form = userProfileForm(instance=profile_instance)
+
+    if request.method == 'POST':
+        form = userProfileForm(request.POST, request.FILES, instance=profile_instance)
+        if form.is_valid():
+            form.save()
+            return redirect('userProfile')  # Redirect to the profile page after editing
+
+    context = {
+        'form': form
+    }
+    return render(request, template_name='UserProfileForm.html', context=context)
+@login_required(login_url='login')
+def cart(request):
+    cart_items = Cart.objects.filter(user=request.user)
+    context = {
+        'cart_items': cart_items,
+    }
+    #total_price = sum(item.product.price * item.quantity for item in cart_items)
+    return render(request,template_name='cart.html', context=context)
+
+
+def add_to_cart(request, product_id):
+    iDet = Items.objects.get(pk=product_id)
+    cart_item, created = Cart.objects.get_or_create(product=iDet, user=request.user)
+    cart_item.quantity += 1
+    cart_item.save()
+    return redirect('cart')
+
+
+def remove_from_cart(request, item_id):
+    cart_item = Cart.objects.get(id=item_id)
+    cart_item.delete()
+    return redirect('cart')
+
+def orders(request):
+    order = Order.objects.filter(user=request.user)
+    context = {
+        'order': order,
+    }
+
+    return  render(request,template_name='orders.html',context=context)
+
+
+def add_orders(request):
+    if request.method =='POST':
+        form = orderForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('orders')
+    else:
+        # Get the product ID from the query parameters
+        product_id = request.GET.get('product_id')
+        if product_id:
+            # Retrieve the product object based on the ID
+            product_obj = get_object_or_404(Items, id=product_id)
+            # Pre-fill the form with product details
+            initial_data = {
+                'product': product_obj,
+
+            }
+            form = orderForm(initial=initial_data)
+        else:
+            form = orderForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, template_name='orderForm.html', context=context)

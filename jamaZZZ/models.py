@@ -5,20 +5,22 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
 
 
-class Profile(models.Model):
- user = models.OneToOneField(User,null=True, on_delete=models.CASCADE)
+class UserProfile(models.Model):
+ NID_LENGTH = 5
+ user = models.OneToOneField(User, on_delete=models.CASCADE)
+ name = models.CharField(max_length=100)
+ # email = models.EmailField(blank=True, null=True)
+ nid = models.CharField(max_length=NID_LENGTH,default='12345')  # min length 10
+ contact_no = models.CharField(max_length=20, blank=True, null=True, default='+880')
 
- user_mobile = models.CharField(max_length=11, null=True, blank=True)
- user_profile_pic = models.ImageField(upload_to='images/', null=True, blank=True, default='images/Default_pic.png')
-            #need to include default_pic
- user_type = (
-  ('normal', 'normal'),
-  ('designer', 'designer')
- )
- type_of_user = models.CharField(max_length=10, choices=user_type, blank=True, null=True)
+ picture = models.ImageField(upload_to='images/', blank=True, null=True,
+                             default='images/Default_pic.jpg')
+ about_myself = models.TextField(blank=True, null=True, default='will add later')
+ address = models.CharField(max_length=255)
 
  def __str__(self):
-    return self.user.username
+  return self.name
+
 
 
 class Items(models.Model):
@@ -71,6 +73,34 @@ class Design(models.Model):
 
 
 class Cart(models.Model):
- create_date = models.DateTimeField(auto_now_add=True, auto_now=False)
- update_date = models.DateTimeField(auto_now_add=True, auto_now=False)
+ user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+ product = models.ForeignKey(Items, on_delete=models.CASCADE, blank=True, null=True)
+ quantity = models.PositiveIntegerField(default=1, blank=True, null=True)
 
+ def __str__(self):
+  return f"Cart for {self.user}"
+
+
+class Order(models.Model):
+
+
+ PAYMENT_CHOICES = [
+
+  ('bkash', 'bkash'),
+  ('bank', 'bank'),
+  ('nagad', 'nagad'),
+  ('COD', 'COD'),
+  ('rocket', 'rocket'),
+
+ ]
+
+ user = models.ForeignKey(User, on_delete=models.CASCADE)
+ product = models.ForeignKey(Items, on_delete=models.CASCADE, blank=True, null=True)
+ p_quantity = models.PositiveIntegerField(default=1, blank=True, null=True)
+
+ shipping_address = models.TextField(max_length=200)
+ payment_method = models.CharField(max_length=30, choices=PAYMENT_CHOICES, default='COD', blank=True, null=True)
+
+
+ def __str__(self):
+  return f"Order {self.id} by {self.user}"

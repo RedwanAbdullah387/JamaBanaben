@@ -245,10 +245,7 @@
 
 
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="search" aria-label="Search">
-          <button class="CustomeButton" type="submit">Search</button>
-        </form>
+       
 
         <a href="{% url 'loginPage' %}" class="NavbarLoginSignUpButton">
           log in/Sign Up
@@ -257,6 +254,9 @@
         <span>{{request.user}}</span>
         <span><a class="logout" href="{% url 'logoutuser' %}">Logout</a></span>
       </div>
+      <button class="MyProfileButton"><a class="MyProfile" href="{% url 'userProfile' %}">My profile</a>
+      </button>
+
     </div>
   </nav>
   <!-- ======================= Navbar ============= -->

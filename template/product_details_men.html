@@ -21,6 +21,22 @@
     html {
       scroll-behavior: smooth;
     }
+    .MyProfile{
+      color: var(--white_color);
+      font-family: var(--popins);
+    }
+    .MyProfileButton{
+      width: 100px;
+      height: 38px;
+      background-color:#DE73EF;
+      
+      border: none;
+      border-radius: 5px;
+    }
+    .logout{
+      color:var(--white_color);
+      font-family: var(--popins);
+    }
 
     .ItemsPart {
       background-color: var(--white_color);
@@ -46,6 +62,20 @@
       height: 2px;
       background-color: #1A7EF2;
       padding-bottom: 20px;
+
+    }
+
+    .CartButton {
+      width: 180px;
+      height: 38px;
+      background-color: red;
+      color: var(--white_color);
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 20px;
+      font-family: var(--popins);
 
     }
 
@@ -213,6 +243,10 @@
           <li class="nav-item">
             <a class="CustomNavItem" href="{% url 'cart' %}">Cart</a>
           </li>
+          <li class="nav-item">
+            <a class="CustomNavItem" href="{% url 'orders' %}">Orders</a>
+        </li>
+
 
           <li class="nav-item">
             <a class="CustomNavItem" href="{% url 'contact' %}">Contact Us</a>
@@ -220,15 +254,23 @@
 
 
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="search" aria-label="Search">
-          <button class="CustomeButton" type="submit">Search</button>
-        </form>
+       
 
         <button class="NavbarLoginSignUpButton">
           log in/Sign up
         </button>
       </div>
+      <div>
+        <a href="#"><i class="fa-sharp fa-solid fa-cart-shopping" style="color: #FFD43B;"></i></a>
+        <span class="badge badge-pill badge-danger notify">{{request.user.Profile.get_cart_count}}</span>
+
+      </div>
+      <span><a class="logout" href="{% url 'logoutuser' %}">Logout</a></span>
+
+      <button class="MyProfileButton"><a class="MyProfile" href="{% url 'userProfile' %}">My profile</a>
+      </button>
+
+
     </div>
   </nav>
   <!-- ======================= Navbar ============= -->
@@ -262,6 +304,12 @@
             <p class="ItemDetailsbottomRight__category"><span>Category:</span>{{m_Details.product_category}}</p>
             <p class="ItemDetailsbottomRight__stock"><span>Stock:</span>{{m_Details.product_stock}}+</p>
           </div>
+          <br>
+          <a href="#">
+            <button class="CartButton update-cart">Add to Cart</button>
+          </a>
+
+
         </div>
       </div>
 
@@ -282,6 +330,7 @@
     crossorigin="anonymous"></script>
 
   <!-- ===================== bootstrap CDN Link ======= -->
+  <script src="{% static 'js/cart.js' %}"></script>
 </body>
 
 </html>
