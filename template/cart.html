@@ -14,9 +14,17 @@
       --popins: "Poppins", sans-serif;
 
     }
+   
     .MyProfile{
       color: var(--white_color);
       font-family: var(--popins);
+    }
+
+
+    .CartTopTitle{
+      color: var(--mejenta_color);
+      font-family: var(--popins);
+      
     }
     .MyProfileButton{
       width: 100px;
@@ -34,6 +42,7 @@
        /* Add CSS styles for card view */
         .product-card {
             width: 250px; /* Set card width */
+           
             margin: 10px; /* Add spacing between cards */
             border: 1px solid #ccc; /* Add a border for visual separation */
             border-radius: 5px; /* Add border radius for rounded corners */
@@ -191,7 +200,9 @@
   </nav>
   <!-- ======================= Navbar ============= -->
 <!--  ======================cart ===============-->
-  <h1>Your Shopping Cart</h1>
+  <section>
+    <div class="container">
+      <h1 class="CartTopTitle">Your Shopping Cart</h1>
 
     <div class="product-list">
         {% for item in cart_items %}
@@ -217,6 +228,8 @@
         <a class="edit-button" href="{% url 'userPage' %}">Continue Shopping</a>
         <!-- Add button for continue editing here -->
     </div>
+    </div>
+  </section>
 <!--===========================cart =====================-->
 
   <!-- ====================== footer ============== -->

@@ -5,10 +5,67 @@
   <meta charset="UTF-8">
   <title>Designer</title>
   <style>
-    
+    :root {
+      --blue_color: #1A7EF2;
+      --white_color: #FFFFFF;
+      --mejenta_color: #DA14AE;
+      --black_color: #000000;
+      --popins: "Poppins", sans-serif;
+
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .MyProfileButton{
+      width: 100px;
+      height: 38px;
+      background-color:#DE73EF;
+      color: var(--white_color);
+      border: none;
+      border-radius: 5px;
+      font-family: var(--popins);
+    }
+    .MyProfile{
+      color: var(--white_color);
+      font-family: var(--popins);
+    }
     .logout{
       color:var(--white_color);
       font-family: var(--popins);
+    }
+    .DesignerTop{
+      padding: 50px 0;
+    }
+
+    .DesignerTop_content{
+      height: 500px;
+    }
+    .DesignerInfo__text{
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 22px;
+      font-family: var(--popins);
+      padding-top: 7px;
+      padding-left: 5px;
+      color: var(--mejenta_color);
+    }
+    .DesignerInfo__wA{
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 22px;
+      font-family: var(--popins);
+      padding-top: 10px;
+      padding-left: 5px;
+      color: var(--black_color);
+    }
+    .DesignerPageBottom__title{
+       padding-bottom: 70px;
+       font-size: 40px;
+       font-weight: 700;
+       line-height: 22px;
+       font-family: var(--popins);
     }
   </style>
 
@@ -102,11 +159,165 @@
 
         <span>{{request.user}}</span>
         <span><a class="logout" href="{% url 'logoutuser' %}">Logout</a></span>
+        <button class="MyProfileButton"><a class="MyProfile" href="{% url 'userProfile' %}">My profile</a>
+        </button>
       </div>
     </div>
   </nav>
   <!-- ======================= Navbar ============= -->
+<!-- ================== Designer Page Top ===== -->
+ <section class="DesignerTop">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Designer_1.jpg" class="img-fluid designerPic">
+          </picture>
+          <div class="DesignerInfo">
+            <p class="DesignerInfo__text">Abdullah Al Redwan</p>
+            <p class="DesignerInfo__wA">What's App Number</p>
+            <p class="DesignerInfo__text">01715077772</p>
 
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Designer_2.jpg" class="img-fluid designerPic">
+          </picture>
+          <div class="DesignerInfo">
+            <p class="DesignerInfo__text">Azlina Arabi Hossain</p>
+            <p class="DesignerInfo__wA">What's App Number</p>
+            <p class="DesignerInfo__text">01714077771</p>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Designer_3.jpg" class="img-fluid designerPic">
+          </picture>
+          <div class="DesignerInfo">
+            <p class="DesignerInfo__text">Siyam Mia</p>
+            <p class="DesignerInfo__wA">What's App Number</p>
+            <p class="DesignerInfo__text">01715077773</p>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+ </section>
+<!-- ================== Designer Page Top ===== -->
+<!-- ======================== Designer Design ======= -->
+<section class="DesignerPageBottom">
+  <div class="container">
+    <h2 class="DesignerPageBottom__title">Designer's Design</h2>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Designer_3.jpg" class="img-fluid designerPic">
+          </picture>
+          
+        </div>
+      </div>
+      
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Design_1.png" class="img-fluid designerPic">
+          </picture>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Design_2.png" class="img-fluid designerPic">
+          </picture>
+         
+        </div>
+      </div>
+
+    </div>
+
+    <h2 class="DesignerPageBottom__title">Designer's Design</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Designer_2.jpg" class="img-fluid designerPic">
+          </picture>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Design_3.png" class="img-fluid designerPic">
+          </picture>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Design_4.png" class="img-fluid designerPic">
+          </picture>
+         
+        </div>
+      </div>
+
+    </div>
+    <h2 class="DesignerPageBottom__title">Designer's Design</h2>
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Designer_1.jpg" class="img-fluid designerPic">
+          </picture>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Design_5.png" class="img-fluid designerPic">
+          </picture>
+          
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="DesignerTop_content">
+          <picture>
+            <img src="../static/images/Design_6.png" class="img-fluid designerPic">
+          </picture>
+         
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</section>
+
+
+<!-- ======================== Designer Design ======= -->
 
   <!-- ====================== footer ============== -->
   

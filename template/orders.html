@@ -17,6 +17,12 @@
     html {
       scroll-behavior: smooth;
     }
+
+    .card_header{
+      background-color: var(--mejenta_color);
+      color: var(--white_color);
+      font-family: var(--popins);
+    }
     .MyProfile{
       color: var(--white_color);
       font-family: var(--popins);
@@ -153,7 +159,7 @@
 
     </div>
       <div>
-            <a href="{% url 'cart' %}"><i class="fa-sharp fa-solid fa-cart-shopping" style="color: #FFD43B;"></i></a>
+            
             <span class="badge badge-pill badge-danger notify">{{request.user.profile.get_cart_count}}</span>
 
         </div>
@@ -172,7 +178,7 @@
     {% for o in order %}
     <div class="col-md-6 mb-4">
       <div class="card">
-        <div class="card-header">
+        <div class="card_header">
           <h5 class="card-title">Order #{{o.id}}</h5>
         </div>
         <div class="card-body">

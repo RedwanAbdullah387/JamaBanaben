@@ -21,6 +21,12 @@
     html {
       scroll-behavior: smooth;
     }
+
+    .logInbutton{
+       width: 80px;
+       height: 38px;
+       
+    }
     .MyProfile{
       color: var(--white_color);
       font-family: var(--popins);
@@ -277,7 +283,7 @@
 
       </div>
         <div>
-              <a href="{% url 'cart' %}"><i class="fa-sharp fa-solid fa-cart-shopping" style="color: #FFD43B;"></i></a>
+              
               <span class="badge badge-pill badge-danger notify">{{request.user.profile.get_cart_count}}</span>
 
           </div>

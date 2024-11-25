@@ -105,12 +105,12 @@ h1,h2,h3,h4,h5,h6,p,img,br,span,div,section,nav{
 
 
 .NavbarLoginSignUpButton{
-    background-color:#ffff00;
+    background-color:#ffff00; 
     width: 112px;
     height: 40px;
     border-radius: 12px;
     border: none;
-    /* padding-left: 12px; */
+     padding-left: 12px; 
     padding-top: 8px;
     color: var(--black_color);
     font-size: 15px;
@@ -118,6 +118,7 @@ h1,h2,h3,h4,h5,h6,p,img,br,span,div,section,nav{
     font-family: var(--popins);
 
 }
+
 
 
 
