@@ -7,7 +7,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
 
 
-driver.get("http://127.0.0.1:8000/")
+driver.get("http://127.0.0.1:8000/user/")
 
 #driver.find_element(By.ID,"")
 time.sleep(2)
