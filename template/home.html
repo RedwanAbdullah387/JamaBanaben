@@ -1,5 +1,5 @@
 {% load static %}
-<!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -238,6 +238,9 @@
           <li class="nav-item">
             <a class="CustomNavItem" href="{% url 'cart' %}">Cart</a>
           </li>
+          <li class="nav-item">
+            <a class="CustomNavItem" href="{% url 'orders' %}">Orders</a>
+        </li>
 
           <li class="nav-item">
             <a class="CustomNavItem" href="{% url 'contact' %}">Contact Us</a>
@@ -247,8 +250,7 @@
         </ul>
        
 
-        <a href="{% url 'loginPage' %}" class="NavbarLoginSignUpButton">
-          log in/Sign Up
+        <a href="{% url 'loginPage' %}" class="NavbarLoginSignUpButton">LogIn/SignUp
         </a>
 
         <span>{{request.user}}</span>

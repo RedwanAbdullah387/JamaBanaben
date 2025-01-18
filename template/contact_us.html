@@ -98,6 +98,10 @@
           </li>
 
           <li class="nav-item">
+            <a class="CustomNavItem" href="{% url 'orders' %}">Orders</a>
+        </li>
+
+          <li class="nav-item">
             <a class="CustomNavItem" href="{% url 'contact' %}">Contact Us</a>
           </li>
 
@@ -111,8 +115,7 @@
         <span>{{request.user}}</span>
         <span><a class="logout" href="{% url 'logoutuser' %}">Logout</a></span>
       </div>
-      <button class="MyProfileButton"><a class="MyProfile" href="{% url 'userProfile' %}">My profile</a>
-      </button>
+      
 
     </div>
   </nav>

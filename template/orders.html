@@ -149,7 +149,7 @@
       </form> -->
 
       <a href="{% url 'loginPage' %}" class="NavbarLoginSignUpButton">
-        log in/Sign Up
+        logIn/SignUp
       </a>
 
       <span>{{request.user}}</span>
@@ -163,8 +163,7 @@
             <span class="badge badge-pill badge-danger notify">{{request.user.profile.get_cart_count}}</span>
 
         </div>
-      <button class="MyProfileButton"><a class="MyProfile" href="{% url 'userProfile' %}">My profile</a>
-      </button>
+      
       </div>
 </nav>
 <!-- ======================= Navbar ============= -->
